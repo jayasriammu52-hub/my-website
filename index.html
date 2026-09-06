@@ -1,480 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>My Website</title>
+<title>AI Prompt Generator 🚀</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  min-height: 100vh;
+}
 
-    header {
-      padding: 20px;
-      background: #111827;
-      position: sticky;
-      top: 0;
-    }
+header {
+  background: #111827;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #334155;
+}
 
-    header h2 {
-      color: #38bdf8;
-    }
+header h1 {
+  color: #38bdf8;
+  font-size: 28px;
+}
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-    }
+header p {
+  color: #cbd5e1;
+  margin-top: 8px;
+}
 
-    .hero h1 {
-      font-size: 45px;
-      margin-bottom: 15px;
-    }
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+}
 
-    .hero h1 span {
-      color: #38bdf8;
-    }
+.card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
 
-    .hero p {
-      font-size: 18px;
-      color: #cbd5e1;
-      max-width: 600px;
-      line-height: 1.6;
-    }
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #38bdf8;
+  font-weight: bold;
+}
 
-    .btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 14px 28px;
-      background: #38bdf8;
-      color: #0f172a;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-    }
+input, textarea, select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  background: #0f172a;
+  color: white;
+  font-size: 16px;
+}
 
-    .btn:hover {
-      background: #7dd3fc;
-    }
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
 
-    section {
-      padding: 60px 20px;
-    }
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #082f49;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    section h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-      color: #38bdf8;
-    }
+button:hover {
+  background: #7dd3fc;
+}
 
-    .card {
-      max-width: 600px;
-      margin: auto;
-      padding: 30px;
-      background: #1e293b;
-      border-radius: 20px;
-      line-height: 1.7;
-    }
+.copy-btn {
+  margin-top: 12px;
+  background: #22c55e;
+  color: white;
+}
 
-    footer {
-      padding: 25px;
-      background: #111827;
-      color: #94a3b8;
-    }
-  </style>
+.copy-btn:hover {
+  background: #4ade80;
+}
+
+#result {
+  display: none;
+}
+
+.prompt-box {
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 12px;
+  padding: 18px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  color: #e2e8f0;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h2>My Website 🚀</h2>
-  </header>
+<header>
+  <h1>🤖 AI Prompt Generator 🚀</h1>
+  <p>Create powerful AI prompts easily</p>
+</header>
 
-  <div class="hero">
-    <h1>Welcome to <span>My Website</span> 👋</h1>
+<div class="container">
 
-    <p>
-      This is my first website created with HTML and hosted using GitHub.
-      Welcome to my little corner of the internet!
-    </p>
+  <div class="card">
 
-    <a href="#about" class="btn">Explore More</a>
+    <label>🎯 What do you want AI to do?</label>
+    <textarea id="task"
+      placeholder="Example: Create a YouTube video script about mobile photography"></textarea>
+
+    <label>🧠 AI Role</label>
+    <input id="role"
+      placeholder="Example: Expert YouTube Script Writer">
+
+    <label>👥 Target Audience</label>
+    <input id="audience"
+      placeholder="Example: Beginners">
+
+    <label>🎨 Style</label>
+    <select id="style">
+      <option>Professional</option>
+      <option>Creative</option>
+      <option>Friendly</option>
+      <option>Simple</option>
+      <option>Detailed</option>
+    </select>
+
+    <label>📏 Output Length</label>
+    <select id="length">
+      <option>Short</option>
+      <option>Medium</option>
+      <option>Detailed</option>
+    </select>
+
+    <button onclick="generatePrompt()">
+      ✨ Generate AI Prompt
+    </button>
+
   </div>
 
-  <section id="about">
-    <h2>About Me</h2>
-
-    <div class="card">
-      <p>
-        Hello! 👋<br><br>
-        Welcome to my website.
-        I am learning web development and building amazing things
-        using HTML, CSS and JavaScript.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>My Skills 💻</h2>
-
-    <div class="card">
-      <p>
-        🌐 HTML<br>
-        🎨 CSS<br>
-        ⚡ JavaScript<br>
-        🚀 GitHub
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Contact 📩</h2>
-
-    <div class="card">
-      <p>
-        Thanks for visiting my website! ❤️
-      </p>
-
-      <a href="mailto:yourmail@example.com" class="btn">
-        Contact Me
-      </a>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 My Website. All Rights Reserved.
-  </footer>
-
-</body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AI Prompt Studio 🤖</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: white;
-      min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      padding: 25px 15px;
-      background: #111a32;
-      border-bottom: 1px solid #263250;
-    }
-
-    header h1 {
-      color: #38bdf8;
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    header p {
-      color: #aeb9d0;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 850px;
-      margin: 35px auto;
-    }
-
-    .card {
-      background: #151f35;
-      border: 1px solid #293653;
-      border-radius: 18px;
-      padding: 25px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-
-    h2 {
-      margin-bottom: 15px;
-      color: #38bdf8;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 180px;
-      resize: vertical;
-      padding: 18px;
-      border-radius: 14px;
-      border: 1px solid #34415f;
-      background: #0d1427;
-      color: white;
-      font-size: 16px;
-      outline: none;
-    }
-
-    textarea:focus {
-      border-color: #38bdf8;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 15px;
-      flex-wrap: wrap;
-    }
-
-    button {
-      border: none;
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .generate {
-      background: #22c55e;
-      color: white;
-    }
-
-    .generate:hover {
-      background: #16a34a;
-    }
-
-    .clear {
-      background: #334155;
-      color: white;
-    }
-
-    .copy {
-      background: #0ea5e9;
-      color: white;
-    }
-
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 20px;
-      background: #0b1325;
-      border: 1px solid #33415f;
-      border-radius: 14px;
-      white-space: pre-wrap;
-      line-height: 1.7;
-    }
-
-    .examples {
-      display: grid;
-      gap: 12px;
-    }
-
-    .example {
-      padding: 15px;
-      background: #1d2941;
-      border-radius: 12px;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .example:hover {
-      border-color: #38bdf8;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #71809d;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 25px;
-      }
-
-      .card {
-        padding: 18px;
-      }
-
-      textarea {
-        min-height: 150px;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <h1>🤖 AI Prompt Studio</h1>
-    <p>Create powerful AI prompts easily</p>
-  </header>
-
-  <main class="container">
-
-    <section class="card">
-      <h2>✨ Create Your Prompt</h2>
-
-      <textarea
-        id="prompt"
-        placeholder="Type your idea here...&#10;&#10;Example: Create a modern portfolio website for a web developer."
-      ></textarea>
-
-      <div class="buttons">
-        <button class="generate" onclick="generatePrompt()">
-          🚀 Generate Prompt
-        </button>
-
-        <button class="clear" onclick="clearPrompt()">
-          🗑️ Clear
-        </button>
-      </div>
-
-      <div id="result" class="result"></div>
-
-      <div class="buttons">
-        <button class="copy" onclick="copyResult()">
-          📋 Copy Prompt
-        </button>
-      </div>
-    </section>
-
-
-    <section class="card">
-      <h2>💡 Prompt Examples</h2>
-
-      <div class="examples">
-
-        <div class="example" onclick="useExample(this)">
-          Create a modern portfolio website for a web developer.
-        </div>
-
-        <div class="example" onclick="useExample(this)">
-          Create an AI chatbot website with a beautiful mobile-friendly design.
-        </div>
-
-        <div class="example" onclick="useExample(this)">
-          Create a landing page for a new mobile application.
-        </div>
-
-        <div class="example" onclick="useExample(this)">
-          Create an online shopping website with product cards and a cart.
-        </div>
-
-      </div>
-    </section>
-
-
-    <section class="card">
-      <h2>🔥 How It Works</h2>
-
-      <p style="line-height:1.8; color:#b8c3d9;">
-        1️⃣ Enter your idea<br>
-        2️⃣ Click Generate Prompt<br>
-        3️⃣ Get an improved AI prompt<br>
-        4️⃣ Copy it and use it with your favorite AI tool
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    © 2026 AI Prompt Studio 🤖
-  </footer>
-
-
-  <script>
-
-    function generatePrompt() {
-
-      const input = document.getElementById("prompt").value.trim();
-      const result = document.getElementById("result");
-
-      if (input === "") {
-        alert("Please enter your idea first!");
-        return;
-      }
-
-      const generated =
-`You are an expert AI assistant.
-
-TASK:
-${input}
-
-REQUIREMENTS:
-• Create a clear and professional solution.
-• Make the result modern and user-friendly.
-• Ensure the design is mobile responsive.
-• Use clean and well-structured code when coding is required.
-• Explain the important parts clearly.
-• Avoid unnecessary complexity.
-
-OUTPUT:
-Provide the best possible result based on the user's request.`;
-
-      result.style.display = "block";
-      result.textContent = generated;
-    }
-
-
-    function clearPrompt() {
-      document.getElementById("prompt").value = "";
-      document.getElementById("result").style.display = "none";
-      document.getElementById("result").textContent = "";
-    }
-
-
-    function useExample(element) {
-      document.getElementById("prompt").value = element.textContent.trim();
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    }
-
-
-    function copyResult() {
-
-      const result = document.getElementById("result").textContent;
-
-      if (!result) {
-        alert("Generate a prompt first!");
-        return;
-      }
-
-      navigator.clipboard.writeText(result)
-        .then(() => {
-          alert("✅ Prompt copied!");
-        })
-        .catch(() => {
-          alert("Copy failed. Please select and copy manually.");
-        });
-    }
-
-  </script>
+  <div class="card" id="result">
+
+    <h2>🚀 Your AI Prompt</h2>
+
+    <br>
+
+    <div class="prompt-box" id="prompt"></div>
+
+    <button class="copy-btn" onclick="copyPrompt()">
+      📋 Copy Prompt
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 AI Prompt Generator | Made with ❤️
+</footer>
+
+<script>
+
+function generatePrompt() {
+
+  const task = document.getElementById("task").value.trim();
+  const role = document.getElementById("role").value.trim();
+  const audience = document.getElementById("audience").value.trim();
+  const style = document.getElementById("style").value;
+  const length = document.getElementById("length").value;
+
+  if (task === "") {
+    alert("Please enter what you want AI to do.");
+    return;
+  }
+
+  const finalRole =
+    role || "an expert assistant";
+
+  const finalAudience =
+    audience || "general audience";
+
+  const prompt = `You are ${finalRole}.
+
+Your task:
+${task}
+
+Target audience:
+${finalAudience}
+
+Writing style:
+${style}
+
+Output length:
+${length}
+
+Instructions:
+- Understand the task carefully.
+- Give a clear and useful answer.
+- Organize the response logically.
+- Use simple language where possible.
+- Include practical examples when useful.
+- Do not add unnecessary information.
+- Make the final answer easy to understand and use.
+
+Now complete the task professionally.`;
+
+  document.getElementById("prompt").textContent = prompt;
+  document.getElementById("result").style.display = "block";
+
+  window.scrollTo({
+    top: document.getElementById("result").offsetTop,
+    behavior: "smooth"
+  });
+}
+
+function copyPrompt() {
+
+  const prompt =
+    document.getElementById("prompt").textContent;
+
+  navigator.clipboard.writeText(prompt);
+
+  alert("✅ Prompt copied!");
+}
+
+</script>
 
 </body>
 </html>
