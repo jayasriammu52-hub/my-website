@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Website</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      background: #111827;
+      position: sticky;
+      top: 0;
+    }
+
+    header h2 {
+      color: #38bdf8;
+    }
+
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #cbd5e1;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 28px;
+      background: #38bdf8;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #7dd3fc;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    section h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    .card {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      background: #1e293b;
+      border-radius: 20px;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 25px;
+      background: #111827;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2>My Website 🚀</h2>
+  </header>
+
+  <div class="hero">
+    <h1>Welcome to <span>My Website</span> 👋</h1>
+
+    <p>
+      This is my first website created with HTML and hosted using GitHub.
+      Welcome to my little corner of the internet!
+    </p>
+
+    <a href="#about" class="btn">Explore More</a>
+  </div>
+
+  <section id="about">
+    <h2>About Me</h2>
+
+    <div class="card">
+      <p>
+        Hello! 👋<br><br>
+        Welcome to my website.
+        I am learning web development and building amazing things
+        using HTML, CSS and JavaScript.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>My Skills 💻</h2>
+
+    <div class="card">
+      <p>
+        🌐 HTML<br>
+        🎨 CSS<br>
+        ⚡ JavaScript<br>
+        🚀 GitHub
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact 📩</h2>
+
+    <div class="card">
+      <p>
+        Thanks for visiting my website! ❤️
+      </p>
+
+      <a href="mailto:yourmail@example.com" class="btn">
+        Contact Me
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 My Website. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
