@@ -160,4 +160,321 @@
   </footer>
 
 </body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Prompt Studio 🤖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px 15px;
+      background: #111a32;
+      border-bottom: 1px solid #263250;
+    }
+
+    header h1 {
+      color: #38bdf8;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #aeb9d0;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 850px;
+      margin: 35px auto;
+    }
+
+    .card {
+      background: #151f35;
+      border: 1px solid #293653;
+      border-radius: 18px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      resize: vertical;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #34415f;
+      background: #0d1427;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #38bdf8;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .generate {
+      background: #22c55e;
+      color: white;
+    }
+
+    .generate:hover {
+      background: #16a34a;
+    }
+
+    .clear {
+      background: #334155;
+      color: white;
+    }
+
+    .copy {
+      background: #0ea5e9;
+      color: white;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #0b1325;
+      border: 1px solid #33415f;
+      border-radius: 14px;
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+
+    .examples {
+      display: grid;
+      gap: 12px;
+    }
+
+    .example {
+      padding: 15px;
+      background: #1d2941;
+      border-radius: 12px;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .example:hover {
+      border-color: #38bdf8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #71809d;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      textarea {
+        min-height: 150px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🤖 AI Prompt Studio</h1>
+    <p>Create powerful AI prompts easily</p>
+  </header>
+
+  <main class="container">
+
+    <section class="card">
+      <h2>✨ Create Your Prompt</h2>
+
+      <textarea
+        id="prompt"
+        placeholder="Type your idea here...&#10;&#10;Example: Create a modern portfolio website for a web developer."
+      ></textarea>
+
+      <div class="buttons">
+        <button class="generate" onclick="generatePrompt()">
+          🚀 Generate Prompt
+        </button>
+
+        <button class="clear" onclick="clearPrompt()">
+          🗑️ Clear
+        </button>
+      </div>
+
+      <div id="result" class="result"></div>
+
+      <div class="buttons">
+        <button class="copy" onclick="copyResult()">
+          📋 Copy Prompt
+        </button>
+      </div>
+    </section>
+
+
+    <section class="card">
+      <h2>💡 Prompt Examples</h2>
+
+      <div class="examples">
+
+        <div class="example" onclick="useExample(this)">
+          Create a modern portfolio website for a web developer.
+        </div>
+
+        <div class="example" onclick="useExample(this)">
+          Create an AI chatbot website with a beautiful mobile-friendly design.
+        </div>
+
+        <div class="example" onclick="useExample(this)">
+          Create a landing page for a new mobile application.
+        </div>
+
+        <div class="example" onclick="useExample(this)">
+          Create an online shopping website with product cards and a cart.
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="card">
+      <h2>🔥 How It Works</h2>
+
+      <p style="line-height:1.8; color:#b8c3d9;">
+        1️⃣ Enter your idea<br>
+        2️⃣ Click Generate Prompt<br>
+        3️⃣ Get an improved AI prompt<br>
+        4️⃣ Copy it and use it with your favorite AI tool
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 AI Prompt Studio 🤖
+  </footer>
+
+
+  <script>
+
+    function generatePrompt() {
+
+      const input = document.getElementById("prompt").value.trim();
+      const result = document.getElementById("result");
+
+      if (input === "") {
+        alert("Please enter your idea first!");
+        return;
+      }
+
+      const generated =
+`You are an expert AI assistant.
+
+TASK:
+${input}
+
+REQUIREMENTS:
+• Create a clear and professional solution.
+• Make the result modern and user-friendly.
+• Ensure the design is mobile responsive.
+• Use clean and well-structured code when coding is required.
+• Explain the important parts clearly.
+• Avoid unnecessary complexity.
+
+OUTPUT:
+Provide the best possible result based on the user's request.`;
+
+      result.style.display = "block";
+      result.textContent = generated;
+    }
+
+
+    function clearPrompt() {
+      document.getElementById("prompt").value = "";
+      document.getElementById("result").style.display = "none";
+      document.getElementById("result").textContent = "";
+    }
+
+
+    function useExample(element) {
+      document.getElementById("prompt").value = element.textContent.trim();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function copyResult() {
+
+      const result = document.getElementById("result").textContent;
+
+      if (!result) {
+        alert("Generate a prompt first!");
+        return;
+      }
+
+      navigator.clipboard.writeText(result)
+        .then(() => {
+          alert("✅ Prompt copied!");
+        })
+        .catch(() => {
+          alert("Copy failed. Please select and copy manually.");
+        });
+    }
+
+  </script>
+
+</body>
 </html>
